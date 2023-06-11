@@ -2,16 +2,27 @@ package br.cefet.dbf.petshop.model;
 
 import lombok.*;
 
-@Setter
-@Getter
-@ToString
+import javax.persistence.*;
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity(name = "pet")
 public class Pet {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "nome", length = 35, nullable = false)
     private String nome;
+
+    @Column(name = "dono", length = 60, nullable = false)
     private String dono;
+
+    @Column(name = "raca", length = 35, nullable = false)
     private String raca;
+
+    @Column(name = "peso", nullable = true)
     private double peso;
 }
