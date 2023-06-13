@@ -17,6 +17,7 @@ import javax.persistence.Entity;
 import lombok.*;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "ordem")

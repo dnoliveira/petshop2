@@ -5,9 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity(name = "pet")
 public class Pet {
     @Id

@@ -10,9 +10,11 @@ import javax.persistence.Id;
 
 import lombok.*;
 
+
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @Entity(name = "servico")
 public class Servico {
     @Id
