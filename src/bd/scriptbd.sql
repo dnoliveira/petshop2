@@ -1,0 +1,71 @@
+-- MySQL Workbench Synchronization
+-- Generated: 2023-06-19 19:40
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: douglas
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+DROP SCHEMA IF EXISTS `petshop`;
+CREATE SCHEMA IF NOT EXISTS `petshop` DEFAULT CHARACTER SET utf8 ;
+
+CREATE TABLE IF NOT EXISTS `petshop`.`pet` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(35) NOT NULL,
+  `dono` VARCHAR(65) NOT NULL,
+  `raca` VARCHAR(35) NOT NULL,
+  `peso` DOUBLE NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `petshop`.`ordem` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `idPet` BIGINT(20) NOT NULL,
+  `dtOrdem` DATETIME NOT NULL,
+  `observacao` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_ordem_pet_idx` (`idPet` ASC),
+  CONSTRAINT `fk_ordem_pet`
+    FOREIGN KEY (`idPet`)
+    REFERENCES `petshop`.`pet` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `petshop`.`ordem_servico` (
+  `idOrdem` BIGINT(20) NOT NULL,
+  `idServico` BIGINT(20) NOT NULL,
+  `valor` DECIMAL(19,2) NOT NULL,
+  PRIMARY KEY (`idOrdem`, `idServico`),
+  INDEX `fk_ordem_servico_servico1_idx` (`idServico` ASC),
+  CONSTRAINT `fk_ordem_servico_ordem1`
+    FOREIGN KEY (`idOrdem`)
+    REFERENCES `petshop`.`ordem` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ordem_servico_servico1`
+    FOREIGN KEY (`idServico`)
+    REFERENCES `petshop`.`servico` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `petshop`.`servico` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `descricao` VARCHAR(35) NOT NULL,
+  `valor` DECIMAL(19,2) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+

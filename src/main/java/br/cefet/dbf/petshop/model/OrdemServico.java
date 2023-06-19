@@ -13,19 +13,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@IdClass(OrdemServicoId.class)
 @Entity(name = "ordem_servico")
 public class OrdemServico {
+    @Id
+    private Long idOrdem;
 
-    @EmbeddedId
-    private OrdemServicoId id = new OrdemServicoId();
-
-    @ManyToOne
-    @MapsId("idOrdem")
-    private Ordem ordem;
-
-    @ManyToOne
-    @MapsId("idServico")
-    private Servico servico;
+    @Id
+    private Long idServico;
 
     @Column(nullable = false)
     private BigDecimal valor;

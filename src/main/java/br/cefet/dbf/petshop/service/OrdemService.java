@@ -47,8 +47,8 @@ public class OrdemService {
                 servico = servicoOpt.get();
 
                 OrdemServico ordemServico = new OrdemServico();
-                ordemServico.setOrdem(ordem);
-                ordemServico.setServico(servico);
+                ordemServico.setIdOrdem(ordem.getId());
+                ordemServico.setIdServico(servico.getId());
                 ordemServico.setValor(servico.getValor());
                 ordemServicoRepository.save(ordemServico);
             }

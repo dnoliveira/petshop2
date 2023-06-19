@@ -21,7 +21,7 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 60, nullable = false)
+    @Column(length = 35, nullable = false)
     private String descricao;
 
     @Column(nullable = false)

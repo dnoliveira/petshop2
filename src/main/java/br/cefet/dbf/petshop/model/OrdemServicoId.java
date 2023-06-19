@@ -9,7 +9,6 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Embeddable
 public class OrdemServicoId implements Serializable {
     private static final long serialVersionUID = 1L;
 

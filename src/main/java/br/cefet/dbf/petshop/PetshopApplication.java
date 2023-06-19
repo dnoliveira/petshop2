@@ -39,6 +39,7 @@ public class PetshopApplication implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		/*
 		// INSERIR PETs
 		Pet pet1 = Pet.builder()
 				.id(1L)
@@ -66,7 +67,9 @@ public class PetshopApplication implements ApplicationRunner {
 		System.out.println(serv2);
 		System.out.println(pet1);
 		System.out.println(pet2);
+		*/
 
+		/*
 		//Ordem de servico
 		List<Servico> servicoList = new ArrayList<>();
 		servicoList.add(serv1);
@@ -78,6 +81,7 @@ public class PetshopApplication implements ApplicationRunner {
 				.build();
 		ordemRepository.save(ordem); //Erro pois valor não tem informacao.
 		//ordemService.save(ordem);
+		*/
 
 		/*
 		 * ordem = ordemRepository.save(ordem);
